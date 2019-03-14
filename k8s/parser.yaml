@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: parser
-        image: nrlabs/newrelic-k8s-guestbook-parser:latest
+        image: nrlabs/newrelic-k8s-guestbook-local-parser:latest
         imagePullPolicy: Never
         livenessProbe:
           httpGet:

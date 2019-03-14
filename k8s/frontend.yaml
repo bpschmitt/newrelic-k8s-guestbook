@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: nrlabs/newrelic-k8s-guestbook-frontend:latest
+        image: nrlabs/newrelic-k8s-guestbook-local-frontend:latest
         imagePullPolicy: Never
         livenessProbe:
           httpGet:
@@ -38,8 +38,8 @@ spec:
           periodSeconds: 5
         resources:
           requests:
-            cpu: 50m
-            memory: 100Mi
+            cpu: 100m
+            memory: 200Mi
         env:
         - name: NEW_RELIC_LICENSE_KEY
           valueFrom:
