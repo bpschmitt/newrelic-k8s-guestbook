@@ -12,6 +12,7 @@ var lookBusy = function() {
   const end = Date.now() + 500;
   while (Date.now() < end) {
     const doSomethingHeavyInJavaScript = 1 + 2 + 3;
+    // pushToQueue("Automated message - " + Date.now().toString());
   }
 };
 
@@ -27,6 +28,7 @@ var pushToQueue = function(message) {
         var q = 'message';
         ch.assertQueue(q, {durable: false});
         ch.sendToQueue(q, new Buffer(message), { headers: {'x-newrelic-payload': payload}});
+        newrelic.addCustomAttribute('msgData', message);
         console.error('Parser ' + process.env.NEW_RELIC_METADATA_KUBERNETES_POD_NAME + ': message sent to queue ' + message);
       });
       setTimeout(function() { conn.close() }, 500);
